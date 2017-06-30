@@ -584,6 +584,7 @@
 		8F4BDF7D1CE4AB34007DCB86 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4BDF7C1CE4AB34007DCB86 /* libsqlite3.tbd */; };
 		8F4BDF801CE4ACC6007DCB86 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4BDF7A1CE4AB25007DCB86 /* libz.tbd */; };
 		8F5074741C10BCEC00F52B83 /* OELibraryGamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F5074761C10BCEC00F52B83 /* OELibraryGamesViewController.xib */; };
+		8F66F92D1D38529B00A5F1AF /* OpenEmu.help in Resources */ = {isa = PBXBuildFile; fileRef = 8FEF00721CC9F36B006D01BD /* OpenEmu.help */; };
 		8FD905771AA2927100FA7662 /* OEPrefControlsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD905791AA2927100FA7662 /* OEPrefControlsController.xib */; };
 		934355091F0C13350076E859 /* OpenEmuXPCCommunicator.framework in Copy Frameworks to App Frameworks */ = {isa = PBXBuildFile; fileRef = 934355001F0C130A0076E859 /* OpenEmuXPCCommunicator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9343550C1F0C136E0076E859 /* OpenEmuXPCCommunicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 934355001F0C130A0076E859 /* OpenEmuXPCCommunicator.framework */; };
@@ -2304,6 +2305,7 @@
 		8F50747E1C10BD0500F52B83 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OELibraryGamesViewController.strings; sourceTree = "<group>"; };
 		8F5074801C10BD0900F52B83 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OELibraryGamesViewController.strings; sourceTree = "<group>"; };
 		8F5074821C10BD0C00F52B83 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OELibraryGamesViewController.strings; sourceTree = "<group>"; };
+		8FEF00721CC9F36B006D01BD /* OpenEmu.help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenEmu.help; sourceTree = "<group>"; };
 		8FF29BE51C10A46C00E5E134 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OEMigrationWindowController.strings; sourceTree = "<group>"; };
 		8FF29BE61C10A47200E5E134 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/OEMigrationWindowController.strings; sourceTree = "<group>"; };
 		8FF29BE71C10A47500E5E134 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OEMigrationWindowController.strings; sourceTree = "<group>"; };
@@ -3613,6 +3615,7 @@
 			children = (
 				87191CC51F6F5524006D2EE3 /* dsa_pub.pem */,
 				8F071F3A1C255362007B76DA /* Credits.rtf */,
+				8FEF00721CC9F36B006D01BD /* OpenEmu.help */,
 				1B32150F14DDD03200C5B50A /* Setup Assistant Animation Resources */,
 				C68A54E41516AD3C001053F2 /* OEDatabase.xcdatamodeld */,
 				1BEF34741168F8640090F72B /* PLists */,
@@ -6922,6 +6925,7 @@
 				83338C2217A281C7007E32E9 /* secret.mp3 in Resources */,
 				94AE2C1017B07D450018DFBB /* cheats-database.xml in Resources */,
 				87AA7D0C2071871E00E5DB80 /* hud_rewind_notification.png in Resources */,
+				8F66F92D1D38529B00A5F1AF /* OpenEmu.help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

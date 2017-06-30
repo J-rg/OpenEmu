@@ -190,13 +190,13 @@ NSString * const OESkipDiscGuideMessageKey = @"OESkipDiscGuideMessageKey";
         alert.messageText = NSLocalizedString(@"Have you read the guide?", @"");
         alert.informativeText = NSLocalizedString(@"Disc-based games have special requirements. Please read the disc importing guide.", @"");
         alert.alertStyle = NSInformationalAlertStyle;
-        [alert addButtonWithTitle:NSLocalizedString(@"View Guide in Browser", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Open Help", @"")];
         [alert addButtonWithTitle:NSLocalizedString(@"Dismiss", @"")];
                 
         [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
             if(returnCode == NSAlertFirstButtonReturn) {
-                NSURL *guideURL = [NSURL URLWithString:OECDBasedGamesUserGuideURLString];
-                [[NSWorkspace sharedWorkspace] openURL:guideURL];
+                NSString *helpBookName = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleHelpBookName"];
+                [[NSHelpManager sharedHelpManager] openHelpAnchor:@"discbased" inBook:helpBookName];
             }
         }];
     }

@@ -36,8 +36,6 @@ class BIOSFile: NSObject {
          "OpenEmu",
          "BIOS"])
     
-    private static let fileGuideURL = URL(string: "https://github.com/OpenEmu/OpenEmu/wiki/User-guide:-BIOS-files")!
-    
     // MARK: - File Handling
     
     /// Determine if BIOS file exists and has correct MD5 hash.
@@ -107,7 +105,8 @@ class BIOSFile: NSObject {
             
             // Alert the user of missing BIOS/system files that are required for the core.
             if OEHUDAlert.missingBIOSFilesAlert(missingFilesList).runModal() == .alertSecondButtonReturn {
-                NSWorkspace.shared.open(BIOSFile.fileGuideURL)
+                let helpBookName = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as! String
+                NSHelpManager.shared.openHelpAnchor(NSHelpManager.AnchorName(rawValue: "biosfiles"), inBook: NSHelpManager.BookName(rawValue: helpBookName))
             }
             
             return false

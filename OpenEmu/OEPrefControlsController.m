@@ -550,7 +550,8 @@ static CFHashCode _OEHIDEventHashSetCallback(OEHIDEvent *value)
         }
         else if(result == NSAlertThirdButtonReturn)
         {
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/OpenEmu/OpenEmu/wiki/User-guide:-Wiimote-and-Wii-U-Pro-pairing"]];
+            NSString *helpBookName = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleHelpBookName"];
+            [[NSHelpManager sharedHelpManager] openHelpAnchor:@"wiimote" inBook:helpBookName];
         }
     }
     else

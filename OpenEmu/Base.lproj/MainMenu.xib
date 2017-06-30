@@ -600,7 +600,7 @@ DQ
                         <items>
                             <menuItem title="User Guide" keyEquivalent="?" id="q7W-GV-n3p">
                                 <connections>
-                                    <action selector="showOEHelp:" target="-1" id="22h-bg-AzL"/>
+                                    <action selector="showHelp:" target="-1" id="22h-bg-AzL"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Release Notes" id="5YI-Il-P9H">

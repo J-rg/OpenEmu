@@ -50,12 +50,13 @@
             alert.messageText = NSLocalizedString(@"ECM compressed binary detected.", @"");
             alert.informativeText = NSLocalizedString(@"ECM compressed binaries cannot be imported. Please read the disc importing guide.", @"");
             alert.alertStyle = NSCriticalAlertStyle;
-            [alert addButtonWithTitle:NSLocalizedString(@"View Guide in Browser", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"Open Help", @"")];
             [alert addButtonWithTitle:NSLocalizedString(@"Dismiss", @"")];
 
             if([alert runModal] == NSAlertFirstButtonReturn)
             {
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/OpenEmu/OpenEmu/wiki/User-guide:-CD-based-games"]];
+                NSString *helpBookName = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleHelpBookName"];
+                [[NSHelpManager sharedHelpManager] openHelpAnchor:@"discbased" inBook:helpBookName];
             }
         });
 
