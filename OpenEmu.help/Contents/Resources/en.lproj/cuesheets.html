@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="../Shared/style.css"/>
+	<title>OpenEmu Help</title>
+</head>
+<body>
+<nav><a href="index.html">OpenEmu Help</a></nav>
+
+<a name="discbased"></a>
+<h1>Add CD based games</h1>
+<ol>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#importing">Importing</a></li>
+<li><a href="#supported-formats">Supported Formats</a></li>
+<li><a href="#cue-sheets">Cue Sheets</a></li>
+<li><a href="#how-to-dump-a-physical-cd">How to Dump a Physical CD</a></li>
+</ol>
+
+<h3>Help</h3>
+
+<ul>
+<li><a href="#q-my-cue-sheet-or-ccd-wont-import">My cue sheet or CCD won't import</a></li>
+<li><a href="#q-i-have-no-music-at-all-only-sound-effects-most-of-the-time">I have no music at all, only sound effects most of the time</a></li>
+<li><a href="#q-i-only-have-a-single-bin-or-iso-file">I only have a single .BIN or .ISO file</a></li>
+<li><a href="#q-i-have-a-multi-disc-game">I have a multi-disc game</a></li>
+<li><a href="#q-i-have-an-ecm-or-ape-file">I have an .ECM or .APE file</a></li>
+<li><a href="#q-i-have-a-chd-file-from-archiveorg">I have a .CHD file from Archive.org</a></li>
+<li><a href="#q-i-have-a-mdf-and-a-mds-file">I have a .MDF and a .MDS file</a></li>
+<li><a href="#q-i-have-a-sbi-file">I have a .SBI file</a></li>
+</ul>
+
+<a name="getting-started"></a><h3>Getting Started</h3>
+
+<p>Compressed archives (such as .rar, .zip, .7z, etc) are <strong>NOT</strong> supported for CD-based games — you must <a href="https://itunes.apple.com/us/app/the-unarchiver/id425424353?mt=12">uncompress</a> them first.</p>
+
+<a name="importing"></a><h3>Importing</h3>
+
+<p>Dumped copies of CD-based games must be loaded in with <a href="https://en.wikipedia.org/wiki/Cue_sheet_%28computing%29">Cue sheets</a> or <a href="https://en.wikipedia.org/wiki/CloneCD_Control_File">CloneCD</a> files only.</p>
+
+<p>Simply drag and drop a <code>.cue</code> or <code>.ccd</code> file into your library and OpenEmu will add all associated files along with it from the same folder. If a game is made up of multiple discs, please follow the <a href="#q-i-have-a-multi-disc-game"></a> instead.</p>
+
+<p>Please make sure you are importing valid files by carefully reading the sections below.</p>
+
+<h3><a name="supported-formats"></a>Supported Formats</h3>
+
+<p>PC Engine CD/TurboGrafx-CD, PC-FX, PlayStation, Sega Saturn (using Mednafen)</p>
+
+<ul>
+<li>CUE+BIN, both single and <a href="http://redump.org/">multiple .BIN tracks</a>
+</li>
+<li>CUE+IMG, CUE+ISO</li>
+<li>CUE + BIN/IMG/ISO + <a href="https://en.wikipedia.org/wiki/Compact_Disc_Digital_Audio">CDDA</a> tracks with <a href="http://www.mega-nerd.com/libsndfile/#Features">WAV/OGG/FLAC</a>. MP3 is <strong>NOT</strong> supported.</li>
+<li>CloneCD CCD+IMG+SUB</li>
+</ul>
+
+<p>Mega CD/Sega CD (using Genesis Plus GX)</p>
+
+<ul>
+<li>CUE+BIN, CUE+IMG, CUE+ISO</li>
+<li>CUE + BIN/IMG/ISO + <a href="https://en.wikipedia.org/wiki/Compact_Disc_Digital_Audio">CDDA</a> tracks with WAV/OGG. MP3 is <strong>NOT</strong> supported.</li>
+</ul>
+
+<a name="cue-sheets"></a><h3>Cue Sheets</h3>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Cue_sheet_%28computing%29">cue sheet</a> is a <a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> file with a <code>.cue</code> extension containing <a href="http://digitalx.org/cue-sheet/index.html">metadata</a> used to describe the layout of a CD, normally accompanied by one or more data files dumped from the original disc.</p>
+
+<p>Below demonstrates how a cue sheet could be written for a PlayStation game with CDDA, depending on how it was dumped.</p>
+
+<p><strong>Single binary track</strong></p>
+
+<pre><code>FILE "Castlevania - Symphony of the Night (USA).bin" BINARY
+  TRACK 01 MODE2/2352
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    INDEX 01 50:55:45
+</code></pre>
+
+<p><strong>Single binary track — pregap length and subcode flags</strong></p>
+
+<pre><code>FILE "CASTLEVANIA.BIN" BINARY
+  TRACK 01 MODE2/2352
+    FLAGS DCP
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    FLAGS DCP
+    PREGAP 00:02:00
+    INDEX 01 50:53:45
+</code></pre>
+
+<p><strong>Single binary track — pregap start time with INDEX 00</strong></p>
+
+<pre><code>FILE "Castlevania - Symphony of the Night (USA).img" BINARY
+  TRACK 01 MODE2/2352
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    INDEX 00 50:53:45
+    INDEX 01 50:55:45
+</code></pre>
+
+<p><strong>Multiple binary tracks. Data track + separate file for each audio track (common with <a href="http://redump.org/">Redump</a>)</strong></p>
+
+<pre><code>FILE "Castlevania - Symphony of the Night (USA) (Track 1).bin" BINARY
+  TRACK 01 MODE2/2352
+    INDEX 01 00:00:00
+FILE "Castlevania - Symphony of the Night (USA) (Track 2).bin" BINARY
+  TRACK 02 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+</code></pre>
+
+<p><strong>Single binary track with WAVE audio track file</strong></p>
+
+<pre><code>FILE "Castlevania - Symphony of the Night (USA) (Track 1).iso" BINARY
+  TRACK 01 MODE2/2352
+    INDEX 01 00:00:00
+FILE "Castlevania - Symphony of the Night (USA) (Track 2).wav" WAVE
+  TRACK 02 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+</code></pre>
+
+<a name="how-to-dump-a-physical-cd"></a><h3>How to Dump a Physical CD</h3>
+
+<p>Try Redump's <a href="http://wiki.redump.org/index.php?title=Dumping-Guides">CD dumping guide</a>.</p>
+
+<a name="help"></a><h2>Help</h2>
+
+<a id="q-my-cue-sheet-or-ccd-wont-import"></a><h3>Q. My cue sheet or CCD won't import</h3>
+
+<p>It is important that cue sheets are saved as <a href="http://apple.stackexchange.com/a/17435">plain text</a>, without <a href="http://scttdvd.com/post/65242711516/how-to-get-rid-of-smart-quotes-osx-mavericks">"smart quotes" or "smart dashes"</a> and that tracks do not contain hardcoded paths, only filenames.</p>
+
+<p>Open your cue sheet in TextEdit or another <a href="https://macromates.com/download">plain text editor</a> and verify that the filename for <code>BINARY</code>:</p>
+
+<ul>
+<li>matches the filename of your <code>.bin/.img/.iso</code> file and is in the correct case</li>
+<li>has an extension: <code>FILE "CASTLEVANIA.BIN" BINARY</code> and <strong>NOT</strong> <code>FILE "CASTLEVANIA" BINARY</code>
+</li>
+<li>does not contain a hardcoded path: <code>FILE "C:\WINDOWS\DESKTOP\CASTLEVANIA.BIN" BINARY</code>
+</li>
+</ul>
+
+<p>If using a CloneCD <code>.ccd</code>, you must also have a <code>.img</code> and <code>.sub</code> with matching filenames.</p>
+
+<a name="q-i-have-no-music-at-all-only-sound-effects-most-of-the-time"></a><h3>Q. I have no music at all, only sound effects most of the time</h3>
+
+<p>It means you have a bad dump or the cue sheet is missing correct CDDA track information. There is no solution but to obtain a proper dump.</p>
+
+<a name="q-i-only-have-a-single-bin-or-iso-file"></a><h3>Q. I only have a single .BIN or .ISO file</h3>
+
+<p><strong>It is strongly recommended to simply obtain another dump that is packaged properly.</strong></p>
+
+<p>This is considered a bad/incomplete dump. It is necessary your game dump has an associated cue sheet because they are used to describe data and audio for the disc. Attempting to create your own without knowing the layout of the disc and how it was dumped, especially for a game that uses CD Audio (CDDA), will only result in problems.</p>
+
+<a name="q-i-have-a-multi-disc-game"></a><h3>Q. I have a multi-disc game</h3>
+
+<p>You need to create a <code>.m3u</code> file containing the filenames of all the cue sheets for the game. The file <strong>must be saved in a folder together with all the cue sheets and their associated files</strong> in order for them to be automatically imported. Also, the cue sheets for the game must not already be pre-imported in your library. <strong>Note: Mega CD/Sega CD is not supported.</strong></p>
+
+<p>Example:</p>
+
+<ol>
+<li><p>You have a multi-disc game such as <em>Chrono Cross</em> with two cue sheets <code>Chrono Cross (USA) (Disc 1).cue</code> and <code>Chrono Cross (USA) (Disc 2).cue</code>.</p></li>
+<li>
+<p>Now create a <code>.m3u</code> file by opening up your favorite <a href="https://macromates.com/download">plain text editor</a> and copy and pasting the filenames of your cue sheets, one per line appearing as:</p>
+
+<pre><code>Chrono Cross (USA) (Disc 1).cue
+Chrono Cross (USA) (Disc 2).cue
+</code></pre>
+
+<p><strong>Note: For CloneCD rips, only add the `.ccd` filenames to the `.m3u` file.</strong></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1303132/7672776/71744a82-fcc4-11e4-983a-4918553460d2.png" alt="screen shot 2015-05-17 at 6 41 52 pm"/></p>
+</li>
+<li>
+<strong>IMPORTANT</strong> — Save the file as <strong>plain text</strong> (if using TextEdit, select "Make Plain Text" from the Format menu) with a .m3u extension, for example <code>Chrono Cross (USA).m3u</code>
+</li>
+<li>Import only the <code>.m3u</code> file into your library as normal and the cue sheets will be automatically imported. It will appear in your PlayStation library and you can load it.</li>
+</ol>
+
+<pre><code>
+Folder containing all Chrono Cross files/
+└╴Chrono Cross (USA) (Disc 1).bin
+└╴Chrono Cross (USA) (Disc 1).cue
+└╴Chrono Cross (USA) (Disc 2).bin
+└╴Chrono Cross (USA) (Disc 2).cue
+└╴Chrono Cross (USA).m3u    <-- import this file
+</code></pre>
+
+<p>Now, when you reach a point in-game where you must swap discs, select the required disc from the HUD control bar "Select Disc" menu like so:</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1303132/7672801/e2dc3dd2-fcc5-11e4-9cf2-0c25a8069887.png" alt="disc 2"/></p>
+
+<a name="q-i-have-an-ecm-or-ape-file"></a><h3>Q. I have an .ECM or .APE file</h3>
+
+<p>Dumps with <code>.ecm</code> and <code>.ape</code> are compressed data and audio tracks. These files must be uncompressed before they can be used.</p>
+
+<p>Our example will use a cue sheet named <code>Castlevania - Symphony of the Night (USA).cue</code> with the contents and files:</p>
+
+<pre><code>FILE "Castlevania - Symphony of the Night (USA) (Track 1).bin" BINARY
+  TRACK 01 MODE2/2352
+    INDEX 01 00:00:00
+FILE "Castlevania - Symphony of the Night (USA) (Track 2).bin" BINARY
+  TRACK 02 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+
+</code></pre>
+
+<pre><code>Castlevania - Symphony of the Night (USA)/
+└╴Castlevania - Symphony of the Night (USA) (Track 1).7z    &lt;-- uncompress this file
+│ └╴data.bin.ecm
+└╴Castlevania - Symphony of the Night (USA) (Track 2).ape
+</code></pre>
+
+<p><strong>ECM</strong></p>
+
+<p>The <code>.ecm</code> file must be decoded and renamed to match the <code>BINARY</code> track filename from the cue sheet.</p>
+
+<ol>
+<li>Download <a href="https://web.archive.org/web/20140330233023/http://www.neillcorlett.com/downloads/cmdpack-1.03-macosx-x86_64.tar.gz">unecm</a> (via the Command-Line Pack v1.03 by <a href="https://web.archive.org/web/20140330233023/http://www.neillcorlett.com/cmdpack/">Neill Corlett</a>)</li>
+<li>
+<a href="https://itunes.apple.com/us/app/the-unarchiver/id425424353?mt=12">Uncompress</a> cmdpack-1.03-macosx-x86_64.tar.gz and copy the <code>unecm</code> file to the same folder as your game with the <code>.ecm</code> file
+
+<ul>
+<li>If you have the <a href="http://brew.sh/">Homebrew package manager</a>, you might also use <code>brew install ecm</code>
+</li>
+</ul>
+</li>
+<li>Open your cue sheet in TextEdit or another <a href="https://macromates.com/download">plain text editor</a> and notice the filename of the <code>BINARY</code> track and also the <code>.ecm</code> filename in your folder. e.g. <code>Castlevania - Symphony of the Night (USA) (Track 1).bin</code> and <code>data.bin.ecm</code>
+</li>
+<li>Navigate to your game's folder in Terminal. Follow guides <a href="http://apple.stackexchange.com/questions/11323/how-can-i-open-a-terminal-window-directly-from-my-current-finder-location">here</a> or <a href="http://www.howtogeek.com/210147/how-to-open-terminal-in-the-current-os-x-finder-location/">here</a> to do this.</li>
+<li>
+<p>Decode your <code>.ecm</code>. In Terminal, enter the following command and press enter, making sure to add the correct filenames:</p>
+
+<p><code>./unecm "data.bin.ecm" "Castlevania - Symphony of the Night (USA) (Track 1).bin"</code></p>
+</li>
+</ol>
+
+<p><strong>APE</strong></p>
+
+<p>The <code>.ape</code> file must be converted to PCM and renamed to match the <code>AUDIO</code> track filename from the cue sheet.</p>
+
+<ol>
+<li>Download <a href="http://tmkk.undo.jp/xld/index_e.html">X Lossless Decoder (XLD)</a>
+</li>
+<li>Open XLD.app — the application is not signed, so you must right click and select Open</li>
+<li>Go to XLD &gt; Preferences menu and set the Output format to <strong>PCM (little endian)</strong>
+</li>
+<li>To convert your file, just click on Open from the File menu, and navigate to your <code>.ape</code> file</li>
+<li>The converted file will be named, for example, <code>Castlevania - Symphony of the Night (USA) (Track 2).pcm</code> which must then be renamed</li>
+<li>To rename, right click on the <code>.pcm</code> file and select Get Info. From the Name &amp; Extension section, change the file extension from <code>.pcm</code> to match the corresponding audio track inside the cue sheet, presumably <code>.bin</code>, resulting in <code>Castlevania - Symphony of the Night (USA) (Track 2).bin</code>
+</li>
+</ol>
+
+<a name="q-i-have-a-chd-file-from-archiveorg"></a><h3>Q. I have a .CHD file from <a href="https://archive.org/details/software">Archive.org</a></h3>
+
+<p>Some CD dumps are stored in a MAME/MESS-specific format capable of multiple layers of compression (LZMA/zlib/FLAC/Huffman) called CHD (Compressed Hunks of Data or Compressed Hard Disk images), containing a <code>.cue</code> and <code>.bin</code> file. These files must be uncompressed with <code>chdman</code> before they can be used.</p>
+
+<ol>
+<li>Download and install the <a href="http://www.libsdl.org/download-2.0.php">SDL2</a> framework for OS X.</li>
+<li>Download a pre-compiled version of MAME or MESS 64-bit (x86_64) from <a href="http://sdlmame.lngn.net/">SDLMAME</a>
+</li>
+<li>
+<a href="https://itunes.apple.com/us/app/the-unarchiver/id425424353?mt=12">Uncompress</a> the <code>.zip</code> file and copy the <code>chdman</code> file found inside the "tools" folder to the same folder as your game with the <code>.chd</code> file</li>
+<li>Navigate to your game's folder in Terminal. Follow guides <a href="http://apple.stackexchange.com/questions/11323/how-can-i-open-a-terminal-window-directly-from-my-current-finder-location">here</a> or <a href="http://www.howtogeek.com/210147/how-to-open-terminal-in-the-current-os-x-finder-location/">here</a> to do this.</li>
+<li>
+<p>Extract your <code>.chd</code>. In Terminal, enter the following command and press enter, making sure to add the correct filenames:</p>
+
+<p><code>./chdman extractcd -i "sonic cd (usa).chd" -o "sonic cd (usa).cue" -ob "sonic cd (usa).bin"</code></p>
+</li>
+</ol>
+
+<a name="q-i-have-a-mdf-and-a-mds-file"></a><h3>Q. I have a .MDF and a .MDS file</h3>
+
+<p>These are an alternative format to iso/bin images created by some software like Alcohol 120%. They are very easy to convert into .bin/.cue.</p>
+
+<ol>
+<li>
+<p>Install a command-line tool named mdf2iso using either macports or homebrew.</p>
+
+<p><code>$ brew install mdf2iso</code></p>
+</li>
+<li>
+<p>In the directory with both .mdf and .mds files, run the following command to convert into .bin/.cue.</p>
+
+<p><code>$ mdf2iso --cue name_of_file.mdf</code></p>
+</li>
+<li>
+<p>This will generate compatible .bin/.cue files in the same directory, with the same name as the original image.</p>
+</li>
+</ol>
+
+<a name="q-i-have-a-sbi-file"></a><h3>Q. I have a .SBI file</h3>
+<p>Hundreds of PAL region PlayStation games used <a href="http://wiki.redump.org/index.php?title=PlayStation_1:_LibCrypt_protection">LibCrypt</a>, a copy protection mechanism that stored non-standard data in subchannels on the disc. If missing from a backup, this crippled games by disabling input (<a href="https://tcrf.net/Ape_Escape_(PlayStation)#Anti-Piracy">Ape Escape</a>), impossible difficulty (Lucky Luke: Western Fever), mysterious bugs (<a href="https://tcrf.net/Spyro:_Year_of_the_Dragon#Anti-Piracy_Message">Spyro: Year of the Dragon</a>) or freezing at boot (Resident Evil 3: Nemesis) or during a level (Wip3out).</p>
+
+<p>Dumped copies that use <strong>cue sheets</strong> require additional <code>.sbi</code> subchannel data files in order for these games to work.</p>
+
+<p>Download <code>.sbi</code> files for affected games from <a href="http://redump.org/discs/libcrypt/2/">redump.org</a> by first choosing your game and then finding "SBI subchannels" at the top of the page.</p>
+
+<p>Drag and drop the <code>.sbi</code> to import it alongside your game. <strong>IMPORTANT</strong> — The <code>.sbi</code> file <strong>must</strong> be named exactly as the base filename of your cue sheet including case e.g.</p>
+
+<ul>
+<li>
+<code>Ape Escape (Europe).cue</code> and <code>Ape Escape (Europe).sbi</code>
+</li>
+<li>
+<code>Wip3out (Europe) (En,Fr,De,Es,It).CUE</code> and <code>Wip3out (Europe) (En,Fr,De,Es,It).SBI</code>
+</li>
+</ul>
+
+<p><strong>Note: <a href="#q-i-have-a-multi-disc-game">multi-disc games</a> such as Final Fantasy VIII, Final Fantasy IX, Galerians and Parasite Eve II must have all <code>.sbi</code> files for each disc imported.</strong></p>
+
+</body>
+</html>

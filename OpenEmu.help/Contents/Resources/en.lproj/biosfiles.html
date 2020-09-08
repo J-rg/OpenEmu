@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="../Shared/style.css"/>
+	<title>OpenEmu Help</title>
+</head>
+<body>
+<nav><a href="index.html">OpenEmu Help</a></nav>
+
+<a name="biosfiles"></a>
+<h1>BIOS files</h1>
+
+<p><strong>Important: Do not manually copy a file to your BIOS folder. If files aren't automatically copying, that means you have incorrect files. Please follow the guide below.</strong></p>
+
+<p>In order to emulate some systems, BIOS files are needed due to increasing complexity of the hardware and software of modern gaming consoles. If the core you are currently trying to use needs a BIOS file, OpenEmu will alert you with a popup message. Before installing a BIOS file, make sure that its associated core plugin is installed and the MD5 hash is correct, or it will not work! Installing a BIOS is as simple as adding a game to OpenEmu, just drag-and-drop a BIOS onto your library!</p>
+
+<p>You can check the hash of your file by opening Terminal.app, typing <code>md5 /path/to/file</code> and pressing Enter. Instead of typing the file path in manually, you can just drag the file onto the Terminal window.</p>
+
+<h3>Required BIOS Files for Cores</h3>
+
+<table>
+<tr>
+<th>System</th>
+<th>Core</th>
+<th>BIOS/Firmware Info</th>
+</tr>
+
+<tr>
+<td>Atari 5200</td>
+<td>Atari800</td>
+<td><code>5200.rom</code><br>MD5: 281f20ea4320404ec820fb7ec0693b38</td>
+</tr>
+
+<tr>
+<td>Atari Lynx</td>
+<td>Mednafen</td>
+<td><code>lynxboot.img</code> or <code>lynxa.bin</code><br>MD5: fcd403db69f54290b51035d82f835e7b</td>
+</tr>
+
+<tr>
+<td>ColecoVision</td>
+<td>CrabEmu</td>
+<td><code>coleco.rom</code> or <code>313 10031-4005 73108a.u2</code><br>MD5: 2c66f5911e5b42b8ebe113403548eee7</td>
+</tr>
+
+<tr>
+<td>Famicom Disk System</td>
+<td>Nestopia</td>
+<td><code>disksys.rom</code> or <code>rp2c33a-01a.bin</code><br>MD5: ca30b50f880eb660a320674ed365ef7a</td>
+</tr>
+
+<tr>
+<td>Intellivision</td>
+<td>Bliss</td>
+<td>Executive ROM<br><code>exec.bin</code><br>MD5: 62e761035cb657903761800f4437b8af<br><br>Graphics ROM<br><code>grom.bin</code> or <code>ro-3-9503-003.u21</code><br>MD5: 0cd5946c6473e42e8e4c2137785e427f<br><br>Intellivoice ROM<br><code>ivoice.bin</code> or <code>sp0256-012.bin</code> (Optional)<br>MD5: d5530f74681ec6e0f282dab42e6b1c5f<br><br>Entertainment Computer System ROM<br><code>ecs.bin</code> (Optional)<br>MD5: 2e72a9a2b897d330a35c8b07a6146c52</td>
+</tr>
+
+<tr>
+<td>Odyssey² / Videopac</td>
+<td>O2EM</td>
+<td><code>o2rom.bin</code> or <code>o2bios.rom</code><br>MD5: 562d5ebf9e030a40d6fabfc2f33139fd</td>
+</tr>
+
+<tr>
+<td>PC-FX</td>
+<td>Mednafen</td>
+<td>PC-FX BIOS (v1.00 - 2 Sep 1994)<br><code>pcfx.rom</code> or <code>pcfxbios.bin</code><br>MD5: 08e36edbea28a017f79f8d4f7ff9b6d7</td>
+</tr>
+
+<tr>
+<td>PlayStation</td>
+<td>Mednafen</td>
+<td>SCPH-5500 (v3.0 09/09/96 Japan)<br><code>ps-30j.bin</code> or <code>scph5500.bin</code><br>MD5: 8dd7d5296a650fac7319bce665a6a53c<br><br>SCPH-5501 (v3.0 11/18/96 America)<br><code>ps-30a.bin</code> or <code>scph5501.bin</code> or <code>scph7003.bin</code><br>MD5: 490f666e1afb15b7362b406ed1cea246<br><br>SCPH-5502 (v3.0 01/06/97 Europe)<br><code>ps-30e.bin</code> or <code>scph5502.bin</code> or <code>scph5552.bin</code><br>MD5: 32736f17079d0b2b7024407c39bd3050</td>
+</tr>
+
+<tr>
+<td>Sega CD / Mega-CD</td>
+<td>Genesis Plus GX</td>
+<td>Model 1 (v1.00 921027 Europe)<br><code>BIOS_CD_E.bin</code> or <code>megacd_model1_bios_1_00_e.bin</code><br>MD5: e66fa1dc5820d254611fdcdba0662372<br><br>Model 1 (v1.00p 911217 Japan)<br><code>BIOS_CD_J.bin</code> or <code>epr-14088e.bin</code><br>MD5: 278a9397d192149e84e820ac621a8edd<br><br>Model 1 (v1.10 921011 USA)<br><code>BIOS_CD_U.bin</code> or <code>mpr-15045b.bin</code><br>MD5: 2efd74e3232ff260e371b99f84024f7f</td>
+</tr>
+
+<tr>
+<td>Sega Saturn</td>
+<td>Mednafen</td>
+<td>Sega Saturn BIOS (v1.01 941228 Japan)<br><code>sega_101.bin</code><br>MD5: 85ec9ca47d8f6807718151cbcca8b964<br><br>Sega Saturn BIOS (v1.01a 941115 NA/EU)<br><code>mpr-17933.bin</code><br>MD5: 3240872c70984b6cbfda1586cab68dbe</td>
+</tr>
+
+<tr>
+<td>SNES</td>
+<td>BSNES</td>
+<td><a href="#snes">Multiple</a></td>
+</tr>
+
+<tr>
+<td>SNES Satellaview</td>
+<td>Snes9x</td>
+<td>Satellaview BS-X BIOS (Japanese)<br><code>BS-X.bin</code> or <code>BS-X - Sore wa Namae o Nusumareta Machi no Monogatari (Japan) (Rev 1).sfc</code> (Optional)<br>MD5: fed4d8242cfbed61343d53d48432aced<br><br>Satellaview BS-X BIOS (<a href="https://project.satellaview.org/downloads.htm">English + No DRM patched</a>)<br><code>BS-X BIOS (English) [No DRM] [2016 v1.3].sfc</code> (Recommended)<br>MD5: 96cf17bf589fcbfa6f8de2dc84f19fa2</td>
+</tr>
+
+<tr>
+<td>TurboGrafx-CD / PC Engine CD</td>
+<td>Mednafen</td>
+<td>Super CD-ROM System (v3.0 Japan)<br><code>syscard3.pce</code> or <code>[BIOS] Super CD-ROM System (Japan) (v3.0).pce</code><br>MD5: 38179df8f4ac870017db21ebcbf53114<br><br>Note: The Japan BIOS is required because the US version won't play some Japan region games (e.g. Mirai Shounen Conan, Sylphia).<br><br><strong>Important:</strong> Dumps of <code>syscard3.pce</code> containing a 512-byte copier header are considered "bad" and will not import. If you have the version with the MD5 hash <code>ff1a674273fe3540ccef576376407d1d</code>, run the following command in Terminal to convert it to the "good" version:<br><br><code>dd bs=512 skip=1 if=syscard3.pce of=syscard3fix.pce</code></td>
+</tr>
+</table>
+
+<hr/>
+
+<a name="snes"></a><h3>SNES Chip Dumps for BSNES</h3>
+
+<p>Many SNES games came with additional coprocessor chips on their cartridge, so the dependencies are per-game. A full list of games that require them can be <a href="http://en.wikipedia.org/wiki/List_of_Super_NES_enhancement_chips#List_of_Super_NES_games_that_use_enhancement_chips">found here</a>.</p>
+
+<table>
+<tr>
+<th>Filename</th>
+<th>MD5 Hash</th>
+</tr>
+
+<tr>
+<td><code>cx4.rom</code></td>
+<td><code>037ac4296b6b6a5c47c440188d3c72e3</code></td>
+</tr>
+
+<tr>
+<td><code>dsp1.rom</code></td>
+<td><code>428fdb968d54353d9c9eced1b0586671</code></td>
+</tr>
+
+<tr>
+<td><code>dsp1b.rom</code></td>
+<td><code>332273cc0df5775d3803f2fd88e95d18</code></td>
+</tr>
+
+<tr>
+<td><code>dsp2.rom</code></td>
+<td><code>9ebbdcec67c0c01d5a0593d3cf167c9e</code></td>
+</tr>
+
+<tr>
+<td><code>dsp3.rom</code></td>
+<td><code>484908d68405d44e2be757b4e1e75d15</code></td>
+</tr>
+
+<tr>
+<td><code>dsp4.rom</code></td>
+<td><code>f229fda2d7b33c5a218cba28147ab9b8</code></td>
+</tr>
+
+<tr>
+<td><code>st010.rom</code></td>
+<td><code>636093910fbaff60c8b327be00aefbd9</code></td>
+</tr>
+
+<tr>
+<td><code>st011.rom</code></td>
+<td><code>5c209ce0283632b6574ad835bf862bee</code></td>
+</tr>
+
+<tr>
+<td><code>st018.rom</code></td>
+<td><code>dafae0e0c71c924075811c595c61a30e</code></td>
+</tr>
+</table>
+
+</body>
+</html>

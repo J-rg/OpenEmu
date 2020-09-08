@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="../Shared/style.css"/>
+	<title>OpenEmu Help</title>
+</head>
+<body>
+<nav><a href="index.html">OpenEmu Help</a></nav>
+
+<a name="wiimote"></a>
+<h1>Pairing a WiiMote</h1>
+
+<p><strong>Note: Generics, clones, knockoffs and third party devices are strictly unsupported.</strong></p>
+
+<p>When pairing for the <strong>very first time</strong>, you need to:</p>
+
+<ul>
+<li>Have Bluetooth enabled on your machine.</li>
+<li>Remove any previous Wiimote pairings stored in Bluetooth prefs.</li>
+<li>Remove third party apps/kexts that cause conflicts (<strong>DarwiinRemote, USB Overdrive, WJoy - these are NOT required and do cause problems!</strong>). Unload kexts for WJoy via Terminal.app with the following command: <code>sudo kextunload -b com.alxn1.driver.wjoy</code>
+</li>
+<li>Go to OpenEmu Control prefs and select "Add a Wiimote…" from the bottom menu.</li>
+<li>IMPORTANT: Reset your Wiimote by pressing the red button on the back or inside the battery cover. <strong>If you get a "Pairing Request" dialog popping up asking for a "Passcode" then you have not reset your Wiimote via the red button!</strong>
+</li>
+<li>Press the "Start Scanning" button from the OE dialog and hold the ①+② buttons on your Wiimote.</li>
+</ul>
+
+<p>Your Wiimote will pair, vibrate and be available in the bottom menu ready for mapping controls or gameplay. <strong>Please note that currently your LED's will NOT be active as it completes pairing.</strong></p>
+
+<p>When pairing the <strong>next time</strong>:</p>
+
+<ul>
+<li>Have Bluetooth enabled on your machine.</li>
+<li>Press and hold the ①+② buttons on your Wiimote as you start OpenEmu and your Wiimote will pair and vibrate. Alternatively, return to OpenEmu Control prefs and pair it from the "Add a Wiimote…" menu again.</li>
+</ul>
+
+</body>
+</html>

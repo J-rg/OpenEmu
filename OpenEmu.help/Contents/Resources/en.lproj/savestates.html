@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="../Shared/style.css"/>
+	<title>OpenEmu Help</title>
+</head>
+<body>
+<nav><a href="index.html">OpenEmu Help</a></nav>
+
+<a name="savestates"></a>
+<h1>Save States</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Saved_game#Save_states">Save states</a> are 'snapshots' of a game's progress. Save states differ from the save functionality built into most games — because they are produced by the emulator itself, they carry none of the limitations that the game or console may otherwise impose. You can create any number of save states you like, as frequently as you like, and loading them will take you back to precisely where you were in the game when they were taken (even in the middle of a battle or cut scene).</p>
+
+<p>You may use a game's built-in save mechanism instead of or in addition to save states, if you like. <strong>IMPORTANT</strong> —  Be aware that save state compatibility between updates is NOT a guarantee as they can break due to changes in an emulator core plugin.</p>
+
+<h3>Automatic save states</h3>
+
+<p>OpenEmu automatically saves your progress as you play a game, so that you can always pick up where you left off without having to manually save. The next time you run the game, you will have the option of restarting from the automatic save state or not. (If you don't see this, you may have to <a href="preflibrary.html#reset-all-dialog-warnings">Reset warnings</a>.)</p>
+
+<h3>Quick Save State</h3>
+
+<p>The Quick Save State combines the ease of use of the automatic save state with the extra control afforded by manual save states. You can make use of it in-game via the <em>Save State</em> (⌘S) and <em>Load State</em> (⌘L) functions of the <em>Controls</em> menu, or via the <em>Quick Save</em> and <em>Quick Load</em> bindings under <em>Special Keys</em> in the <em>Controls</em> preferences. Once a Quick Save State has been created, you can also load from it via the HUD's disk menu.</p>
+
+<h3>Manual save states</h3>
+
+<p>OpenEmu also features manual save states, like most other emulators.</p>
+
+<h4>Loading</h4>
+
+<p>To load from an existing save state, right-click a game in the library view and go to the <em>Play Save Games</em> menu. Here you will find all of the save states you've previously created (not including OE's automatic save state or the Quick Save State). Click on the desired save to load the game from that point.</p>
+
+<p>You may also load a save state via the HUD's disk menu. Within the game window, move the mouse to produce the HUD bar, and click the floppy disk icon near the center. Clicking any of the saves in this menu (anything besides <em>Save Current Game</em>) will load from the corresponding state.</p>
+
+<h4>Saving</h4>
+
+<p>You must be running a game to save its state. Within the game window, move the mouse to produce the HUD bar, and click the floppy disk icon near the center. Inside this menu, you will see a <em>Save Current Game</em> option, as well as (if applicable) any previously created save states and the Quick Save State (see above).</p>
+
+<p>To create a new save state, click on <em>Save Current Game</em>. A dialogue will appear where you can enter a custom name for the save (by default it is based on the date and time). Clicking <em>Save Game</em> will create the save, making it available in the HUD's disk menu as well as the <em>Play Save Games</em> menu in the Library view or Save States collection.</p>
+
+<h4>Deleting</h4>
+
+<p>You can delete a save state in the Save States collection by right-clicking on the desired state and selecting delete.</p>
+
+<h3>Notes</h3>
+
+<p>Save states are generally limited to the core they were created with — if you change cores, your old save states will no longer work. However, if you try to load from a state saved on a different core, OE will automatically switch back to load it.</p>
+
+</body>
+</html>
